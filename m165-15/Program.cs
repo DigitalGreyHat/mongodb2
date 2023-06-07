@@ -108,3 +108,19 @@ foreach (var item in aggregateResult)
     Console.WriteLine("- " + item.Jahr + " " + item.Anzahl);
 }
 Console.WriteLine("");
+
+// Aufgabe 7 - V2
+
+var queryA7 = moviesCollection.AsQueryable()
+    .Where(r => r.Year >= 2000)
+    .GroupBy(r => r.Year)
+    .Select(g => new { Jahr = g.Key, Anzahl = g.Count() })
+    .OrderBy(r => r.Jahr);
+
+Console.WriteLine("Aufgabe I (Zusatzaufgabe) V2: ------------------------------");
+Console.WriteLine("Filme pro Jahr ab 2000");
+foreach (var item in queryA7)
+{
+    Console.WriteLine("- " + item.Jahr + " " + item.Anzahl);
+}
+Console.WriteLine("");
